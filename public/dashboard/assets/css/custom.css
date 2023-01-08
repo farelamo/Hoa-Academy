@@ -1,0 +1,41 @@
+.modal-header {border-bottom: 1px solid #ddd;}
+.modal-footer {border-top: 1px solid #ddd;}
+.table-bordered td {border: 1px solid #ddd;}
+.sidenav {z-index: 1040 !important;}
+.page-item.active .page-link {border-color: #f5365c;background-color: #f5365c;}
+
+.vanilla-calendar-header {background-color: #FFEEE7; border-radius: 10px; padding: 5px;}
+.vanilla-calendar-header button {color: #A13000; font-size: 12px;}
+.vanilla-calendar-arrow::before {background-color: #A13000;}
+.vanilla-calendar-arrow::after {background-color: #A13000;}
+.vanilla-calendar-week__day {color: #A13000; background-color: #FFEEE7; border-radius: 7px; padding: 14px;}
+.vanilla-calendar-day__btn {font-weight: 600; color: #A13000; background-color: #F9F9F9; border-radius: 7px; padding: 14px;}
+.vanilla-calendar-day__btn_prev, .vanilla-calendar-day__btn_next{color: #d3d3d3; background-color: #d3d3d3 !important;}
+.vanilla-calendar-day__btn_weekend {background-color: #F9F9F9;}
+
+#btnvcb label a {background-color: #C07555; font-weight: 400; font-size: 16px;}
+#btnvcb input[type="radio"]:checked + label > a {background-color: #FFEEE7; color: #000 !important;}
+
+.table-v table {border-collapse: collapse; width: 100%;}
+.table-v tbody{outline: 1px solid black; border-radius: 10px;}
+.table-v th {background-color: #C07555; color: white; font-weight: 400;}
+.table-v td, th {border: 1px solid #555; text-align: center; padding: 8px;}
+.table-v td {color: #C07555; padding: 3px 4px}
+.table-v tr:nth-child(even) {background-color: #FFF;}
+.table-v tr:nth-child(odd) {background-color: #FFEEE7;}
+.table-v th:first-of-type {border-top-left-radius: 10px;}
+.table-v th:last-of-type {border-top-right-radius: 10px;}
+.table-v tr:last-of-type td:first-of-type {border-bottom-left-radius: 10px;}
+.table-v tr:last-of-type td:last-of-type {border-bottom-right-radius: 10px;}
+
+.table-x table {border-collapse: separate; width: 100%; border-spacing: 0px 10px;}
+.table-x tr {background-color: #FFF; outline: 1px solid #CCC; border-radius: 14px;}
+.table-x th {background-color: #C07555; color: white; font-weight: 400;}
+.table-x td {color: #000; border: 0px solid #666; padding: 10px 20px;}
+
+.question .card {border-color: #999; border-radius: 20px;}
+.question p {background-color: #C07555; border-radius: 12px;}
+.question input[type="radio"] {transform: scale(1.2);}
+
+
+
