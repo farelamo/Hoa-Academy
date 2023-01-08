@@ -97,27 +97,30 @@
               </div>
             </div>
           </div>
-          <?php  for($i =1; $i<=3; $i++){ ?>
-          <div class="card mb-2 shadow-none" style="border-radius: 20px">
-            <div class="card-body row m-0 p-3">
-              
-              <div class="col-12 row m-0 p-0">
-                <img class="col-4 p-0" src="../assets/img/Image Course.png">
-                <div class="col pe-0">
-                  <h2 class="text-dark m-0" style="line-height: normal;">How to learn a bahasa</h2>
-                  <div class="text-muted">
-                    <p class="m-0 font-weight-bold" style="font-size: 10px">Jack will</p>
-                    <p class="m-0 font-weight-bold" style="font-size: 10px">
-                      <i class="fa fa-clock"></i> 2h 25m 
-                      <i class="fa fa-user ml-2"></i> 400
-                    </p>
+
+          @forelse ($continue_courses as $continue_course)
+            <div class="card mb-2 shadow-none" style="border-radius: 20px">
+              <div class="card-body row m-0 p-3">
+                
+                <div class="col-12 row m-0 p-0">
+                  <img class="col-4 p-0" src="{{ Storage::disk('local')->exists('public/course/'. $continue_course->image) ? Storage::url('public/course/' . $continue_course->image) : '/assets/img/Image Course.png'}}">
+                  <div class="col pe-0">
+                    <h2 class="text-dark m-0" style="line-height: normal;">{{ $continue_course->title }}</h2>
+                    <div class="text-muted">
+                      <p class="m-0 font-weight-bold" style="font-size: 10px">{{ $continue_course->type }}</p>
+                      <p class="m-0 font-weight-bold" style="font-size: 10px">
+                        <i class="fa fa-clock"></i>{{ $continue_course->meet_times }}x Pertemuan 
+                        <i class="fa fa-user ml-2"></i> {{ $continue_course->users->count() }} Peserta
+                      </p>
+                    </div>
                   </div>
                 </div>
+              
               </div>
-             
             </div>
-          </div>
-          <?php } ?>
+          @empty
+            <h1 class="py-4 fw-bold text-center">Belum Ada Progress Course</h1>
+          @endforelse
         </div>
 
         <div class="col-md-3">
