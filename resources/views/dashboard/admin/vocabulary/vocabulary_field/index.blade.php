@@ -32,7 +32,12 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $data->vocabularies->name }}</td>
                             <td>{{ $data->word }}</td>
-                            <td>{{ $data->sound }}</td>
+                            <td>
+                                <audio controls>
+                                    <source src="{{Storage::disk('local')->exists('public/vocabularies/'. $data->sound) ? Storage::url('public/vocabularies/' . $data->sound) : '/assets/sound/no-sound.mp3'}}" type="audio/ogg">
+                                    Your browser does not support the audio element.    
+                                </audio>
+                            </td>
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <a href="/admin/vocabulary/field/{{$data->id}}/edit" class="h3">
