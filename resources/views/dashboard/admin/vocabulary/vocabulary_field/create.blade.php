@@ -26,7 +26,7 @@
 
                     <div class="row mb-3">
                         <div class="col-6">
-                            <label for="word" class="form-label">Vocabulary</label>
+                            <label for="word" class="form-label">Tulisan</label>
                             <input type="text" class="form-control" id="word" name="word"
                                 value="{{ old('word') }}">
                             @error('word')
@@ -66,6 +66,7 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-6">
+                            <label class="form-label">Jenis Vocabulary</label>
                             <select name="vocabulary_id" class="form-select select_box">
                                 <option value="">-- Pilih Jenis Vocabulary --</option>
                                 @foreach ($vocabs as $vocab)
@@ -81,6 +82,7 @@
                             @enderror
                         </div>
                         <div class="col-6">
+                            <label class="form-label">Kategori Vocabulary</label>
                             <select name="vocabulary_category_id" class="form-select select_box">
                                 <option value="">-- Pilih Kategori Vocabulary --</option>
                                 @foreach ($vocabCats as $vocabCat)

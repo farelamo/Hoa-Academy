@@ -14,11 +14,11 @@ class VocabularyFieldRequest extends FormRequest
     public function rules()
     {
         return [
-            'vocabulary_id'             => 'required',
-            'vocabulary_category_id'    => 'required',
+            'vocabulary_id'             => 'required|exists:vocabularies,id',
+            'vocabulary_category_id'    => 'required|exists:vocabulary_categories,id',
             'word'                      => 'required|max:100',
             'vocal'                     => 'required|max:100',
-            'mean'                      => 'required|max:225',
+            'mean'                      => 'required|max:150',
         ];
     }
 
@@ -34,7 +34,7 @@ class VocabularyFieldRequest extends FormRequest
             'vocal.required'                    => 'contoh pelafalan harus diisi',
             'vocal.max'                         => 'maximal contoh pelafalan 100 karakter',
             'mean.required'                     => 'terjemahan vocab harus diisi',
-            'mean.max'                          => 'maximal terjemahan vocab 100 karakter',
+            'mean.max'                          => 'maximal terjemahan vocab 150 karakter',
         ];
     }
 }

@@ -18,6 +18,13 @@
         return redirect()->back()->withInput();
     }
 
+    public function deleteSound($filename)
+    {
+        if(Storage::exists('public/vocabularies/' . $filename)){
+            Storage::delete('public/vocabularies/' . $filename);
+        }
+    }
+
     public function index()
     {
         
@@ -44,21 +51,21 @@
     
     public function store(VocabularyFieldRequest $request)
     {
+        $validator = $request->validate([
+            'sound' => 'required|mimes:mp3|max:5048',
+        ],
+        [
+            'sound.required'   => 'suara harus diisi',
+            'sound.mimes'      => 'format suara harus berupa .mp3',
+            'sound.max'        => 'maximal suara adalah 5mb',
+        ]);
+
+        $soundFile      = $request->file('sound');
+        $sound          = time() . '-' . $soundFile->getClientOriginalName();
+        Storage::putFileAs('public/vocabularies', $soundFile, $sound);
+
         try {
 
-            $validator = $request->validate([
-                'sound' => 'required|mimes:mp3|max:5048',
-            ],
-            [
-                'sound.required'   => 'suara harus diisi',
-                'sound.mimes'      => 'format suara harus berupa .mp3',
-                'sound.max'        => 'maximal suara adalah 5mb',
-            ]);
-
-            $soundFile      = $request->file('sound');
-            $sound          = time() . '-' . $soundFile->getClientOriginalName();
-            Storage::putFileAs('public/vocabularies', $soundFile, $sound);
-            
             VocabularyField::create([
                 'vocabulary_id'           => $request->vocabulary_id,
                 'vocabulary_category_id'  => $request->vocabulary_category_id,
@@ -71,6 +78,7 @@
             Alert::success('Naice', 'Vocabulary berhasil ditambahkan');
             return redirect('/admin/vocabulary/field');
         }catch (Exception $e){
+            $this->deleteSound($sound);
             return $this->error('Terjadi Kesalahan');
         }
     }
@@ -95,45 +103,52 @@
 
     public function update($id, VocabularyFieldRequest $request)
     {
+
+        $data = VocabularyField::where('id', $id)->first();
+        if(!$data){
+            return $this->error('Terjadi Kesalahan');
+        }
+
+        $update = [
+            'vocabulary_id'           => $request->vocabulary_id,
+            'vocabulary_category_id'  => $request->vocabulary_category_id,
+            'word'                    => $request->word,
+            'mean'                    => $request->mean,
+            'vocal'                   => $request->vocal,
+        ];
+
+        if($request->has('sound')){
+
+            $validator = $request->validate([
+                'sound' => 'required|mimes:mp3|max:5048',
+            ],
+            [
+                'sound.required'   => 'suara harus diisi',
+                'sound.mimes'      => 'format suara harus berupa .mp3',
+                'sound.max'        => 'maximal suara adalah 5mb',
+            ]);
+
+            $soundFile = $request->file('sound');
+            $sound     = time() . '-' . $soundFile->getClientOriginalName();
+            Storage::putFileAs('public/vocabularies', $soundFile, $sound);
+
+            $update['sound'] = $sound;
+        }
+
+        $oldSound = $data->sound;
+
         try {
 
-            $update = [
-                'vocabulary_id'           => $request->vocabulary_id,
-                'vocabulary_category_id'  => $request->vocabulary_category_id,
-                'word'                    => $request->word,
-                'mean'                    => $request->mean,
-                'vocal'                   => $request->vocal,
-            ];
-
-            $data = VocabularyField::where('id', $id)->first();
-
-            if($request->has('sound')){
-
-                $validator = $request->validate([
-                    'sound' => 'required|mimes:mp3|max:5048',
-                ],
-                [
-                    'sound.required'   => 'suara harus diisi',
-                    'sound.mimes'      => 'format suara harus berupa .mp3',
-                    'sound.max'        => 'maximal suara adalah 5mb',
-                ]);
-
-                $soundFile   = $request->file('sound');
-                $sound       = time() . '-' . $soundFile->getClientOriginalName();
-                Storage::putFileAs('public/vocabularies', $soundFile, $sound);
-
-                if(Storage::exists('public/vocabularies/' . $data->sound)){
-                    Storage::delete('public/vocabularies/' . $data->sound);
-                }
-
-                $update['sound'] = $sound;
-            }
-
             $data->update($update);
+            if($request->has('sound')){
+                $this->deleteSound($oldSound);
+            }
 
             Alert::success('Naice', 'Vocabulary berhasil diupdate');
             return redirect('/admin/vocabulary/field');
         }catch (Exception $e){
+
+            $this->deleteSound($update['sound']);
             return $this->error('Terjadi Kesalahan');
         }
     }
@@ -142,9 +157,8 @@
     {
         try {
             $data = VocabularyField::where('id', $id)->first();
-            if(Storage::exists('public/course/sound/' . $data->sound)){
-                Storage::delete('public/course/sound/' . $data->sound);
-            }
+
+            $this->deleteSound($data->sound);
             $data->delete();
 
             Alert::success('Naice', 'Vocabulary berhasil dihapus');
