@@ -140,7 +140,7 @@
                 </a>
               </li>
               
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#componentsExamples" class="nav-link collapsed" aria-controls="componentsExamples" role="button" aria-expanded="false">
                   <i class="ni ni-app  text-sm"></i>
                   <span class="nav-link-text ms-1">Dropdown</span>
@@ -162,18 +162,8 @@
                     </li>
                   </ul>
                 </div>
-              </li>
+              </li> --}}
             @endif
-            <li class="nav-item position-absolute" style="bottom: 0">
-               <a href="/logout" class="nav-link" onclick="event.preventDefault();
-                  document.getElementById('logout-form').submit();">
-                  <i class="mdi mdi-logout"></i>
-                  Logout
-                </a>
-                <form id="logout-form" action="/logout" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </li>
           </ul>
           <!-- Divider -->
         </div>

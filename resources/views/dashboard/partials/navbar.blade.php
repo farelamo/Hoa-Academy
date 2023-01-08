@@ -20,17 +20,18 @@
             
             
             <li class="nav-item dropdown">
-              <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="ni ni-bell-55"></i>
+              <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                <i class="ni ni-bell-55" style="color: #686767;"></i>
               </a>
-              <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
+              <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end py-0">
                 <!-- Dropdown header -->
                 <div class="px-3 py-3">
-                  <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">13</strong> notifications.</h6>
+                  <h6 class="text-sm text-muted m-0">Kamu punya <strong class="text-primary">0</strong> notifikasi.</h6>
                 </div>
                 <!-- List group -->
                 <div class="list-group list-group-flush">
-                  <a href="#!" class="list-group-item list-group-item-action">
+                  <h4 class="py-4 fw-bold text-center">Belum Ada Notifikasi</h4>
+                  {{-- <a href="#!" class="list-group-item list-group-item-action">
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
@@ -67,10 +68,10 @@
                         <p class="text-sm mb-0">A new issue has been reported for Argon.</p>
                       </div>
                     </div>
-                  </a>
+                  </a> --}}
                 </div>
                 <!-- View all -->
-                <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
+                {{-- <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a> --}}
               </div>
             </li>
             
@@ -87,20 +88,20 @@
               </div>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link pr-0" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
                     <img alt="Image placeholder" src="{{ asset('dashboard/assets/img/users/Ava.png') }}">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-dark font-weight-bold">Ammar Hisyam</span>
-                    <p class="text-sm text-muted m-0">Ammarhisyam151@gmail.com</p>
+                    <span class="mb-0 text-dark font-weight-bold">{{Auth::user()->name}}</span>
+                    <p class="text-sm text-muted m-0">{{Auth::user()->email}}</p>
                   </div>
                 </div>
               </a>
-              <div class="dropdown-menu  dropdown-menu-right ">
+              <div class="dropdown-menu dropdown-menu-end">
                 <div class="dropdown-header noti-title">
-                  <h6 class="text-overflow m-0">Welcome Ammar Hisyam !</h6>
+                  <h6 class="text-overflow m-0">Welcome {{Auth::user()->name}} !</h6>
                 </div>
                 <a href="#" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
@@ -111,10 +112,14 @@
                   <span>Edit password</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+                <a href="/logout" class="dropdown-item" onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
                   <i class="ni ni-user-run"></i>
-                  <span>Logout</span>
+                  Logout
                 </a>
+                <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                    @csrf
+                </form>
               </div>
             </li>
           </ul>
