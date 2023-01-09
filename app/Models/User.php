@@ -29,4 +29,10 @@ class User extends Authenticatable
         )->withTimestamps();
     }
 
+    public function absensi(){
+        return $this->belongsToMany(Absensi::class, 'absensi_notes', 'user_id', 'absensi_id')
+                    ->withPivot('absensi_id', 'user_id')
+                    ->withTimestamps();
+    }
+
 }

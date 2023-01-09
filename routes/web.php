@@ -46,6 +46,9 @@ Route::prefix('/admin')->group(function(){
     /* Event Route */
     Route::resource('/event', 'Admin\Event\EventController')->except(['show']);
     Route::put('/event/{id}/update/image', 'Admin\Event\EventController@updateImage');
+
+    /* Absensi Route */
+    Route::resource('/absensi', 'Admin\Absensi\AbsensiController')->except(['show']);
 });
 
 /* User Route */

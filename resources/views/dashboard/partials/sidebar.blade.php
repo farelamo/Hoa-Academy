@@ -9,13 +9,19 @@
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
           <!-- Nav items -->
           <ul class="navbar-nav px-3">
-            @if (Auth::user()->role == 'admin')       
+            @if (Auth::user()->role == 'admin')
               <li class="nav-item">
                 <a class="nav-link {{ ($title==='Dashboard') ? 'active' : '' }}" href="/admin/main">
                   <i class="mdi mdi-email-open"></i>
                   <span class="nav-link-text">Dashboard</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link {{ ($title==='absensi') ? 'active' : '' }}" href="/admin/absensi">
+                  <i class="mdi mdi-fingerprint"></i>
+                  <span class="nav-link-text">Absensi</span>
+                </a>
+              </li> 
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#course" class="nav-link collapsed {{ 
                   ($title==='course' || $title==='chapter') ? 'active' : '' }}" 
