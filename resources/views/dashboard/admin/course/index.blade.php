@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($course as $data)
+                    @forelse ($course as $data)
                         <tr class="text-center">
                             <td>{{ $loop->iteration }}</td>
                             <td class="text-left">
@@ -72,7 +72,17 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr style="text-align: center">
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

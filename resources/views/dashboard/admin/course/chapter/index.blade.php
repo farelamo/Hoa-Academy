@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($chapters as $chapter)
+                    @forelse ($chapters as $chapter)
                         <tr class="text-center">
                             <td>{{ $loop->iteration }}</td>
                             <td id="n{{$chapter->id}}">{{ $chapter->title }}</td>
@@ -49,7 +49,15 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr style="text-align: center">
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

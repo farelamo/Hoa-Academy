@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($vocab_fields as $data)
+                    @forelse ($vocab_fields as $data)
                         <tr class="text-center">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $data->vocabularies->name }}</td>
@@ -54,7 +54,15 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr style="text-align: center">
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

@@ -24,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($vocabCategories as $vocabCategory)
+                    @forelse ($vocabCategories as $vocabCategory)
                         <tr class="text-center">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $vocabCategory->name }}</td>
@@ -45,7 +45,13 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr style="text-align: center">
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

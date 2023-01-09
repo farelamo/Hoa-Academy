@@ -64,7 +64,7 @@
                             </td>
                         </tr>
                     @empty
-                        <tr>
+                        <tr style="text-align: center">
                             <td>No Data</td>
                             <td>No Data</td>
                             <td>No Data</td>
