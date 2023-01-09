@@ -51,6 +51,8 @@
                             <td>No Data</td>
                             <td>No Data</td>
                             <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
                       </tr>
                     @endforelse 
                 </tbody>

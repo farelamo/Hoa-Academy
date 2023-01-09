@@ -3,9 +3,7 @@
     namespace App\Services\Admin\Absensi;
 
     use Alert;
-    use JWTAuth;
     use Exception;
-    use JWTFactory;
     use App\Models\Absensi;
     use App\Models\Course;
     use Illuminate\Http\Request;
@@ -21,11 +19,15 @@
             return redirect()->back()->withInput();
         }
 
-        public function checkDateTime($dateAbsensi, $timeAbsensi)
+        public function check($timeAbsensi, $course_id)
         {
-            $dateNow = date('Y-m-d');
-            if($dateAbsensi < $dateNow){
-                toast('Tanggal absensi harus lebih dari tanggal sekarang', 'error');
+            $exist = Absensi::where('date', date('Y-m-d'))
+                            ->where('course_id', $course_id)
+                            ->where('created_by', Auth::user()->id)
+                            ->first();
+                            
+            if($exist){
+                toast('Absensi tanggal ' . $exist->date  . ' sudah ada, mohon hapus dahulu', 'error');
                 return redirect()->back()->withInput();
             }
 
@@ -82,14 +84,24 @@
 
         public function store(AbsensiRequest $request)
         {
+            $rules = [
+                'course_id' => 'required|exists:courses,id',
+            ];
+
+            Validator::make($request->all(), $rules, $messages = 
+            [
+                'course_id.required'    => 'course harus dipilih',
+                'course_id.exists'      => 'course belum ada',
+            ])->validate();
+
             try {
-                $check = $this->checkDateTime($request->date, $request->time);
+                $check = $this->check($request->time, $request->course_id);
                 if($check){
                     return $check;
                 }
                 
                 Absensi::create([
-                    'date'       => $request->date,
+                    'date'       => date('Y-m-d'),
                     'time'       => $request->time,
                     'code'       => rand(1000, 9999),
                     'course_id'  => $request->course_id,
@@ -106,20 +118,18 @@
         public function update($id, AbsensiRequest $request)
         {
             try {
-
-                $check = $this->checkDateTime($request->date, $request->time);
-                if($check){
-                    return $check;
-                }
-
                 $data = Absensi::where('id', $id)->first();
 
                 if ($data->created_by != Auth::user()->id) {
                     return $this->error('Bukan Absensi Anda');
                 }
 
+                $check = $this->check($request->time, $request->course_id);
+                if($check){
+                    return $check;
+                }
+
                 $data->update([
-                    'date'       => $request->date,
                     'time'       => $request->time,
                     'code'       => rand(1000, 9999),
                 ]);

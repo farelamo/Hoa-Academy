@@ -2,24 +2,11 @@
 
 @section('content')
     <div class="container">
-        <form action="/admin/absensi" method="post">
+        <form action="/dashboard/absensi" method="post">
             @csrf
     
             <div class="card pt-5">
                 <div class="card-body">
-                    <div class="row mb-2">
-                        <div class="col">
-                            <div class="form-group">
-                                <div class="col">
-                                    <label class="form-label">Waktu</label>
-                                    <input type="time" class="form-control" name="time" placeholder="Waktu Mulai Absensi" value="{{ old('time') }}">
-                                    @error('time')
-                                        <div class="error">*{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row mb-2 px-3">
                         <div class="col">
                             <div class="form-group">
@@ -36,16 +23,29 @@
                                         <option value="">No Data</option>
                                     @endforelse
                                 </select>
-                                @error('course_id')
+                                @error('course')
                                     <div class="error">*{{ $message }}</div>
                                 @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <div class="form-group">
+                                <div class="col">
+                                    <label class="form-label">Masukkan Kode</label>
+                                    <input type="code" class="form-control" name="code" placeholder="Kode Absensi" value="{{ old('code') }}">
+                                    @error('code')
+                                        <div class="error">*{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col d-flex justify-content-end">
                             <button class="btn btn-success" type="submit">
-                                Simpan
+                                Submit
                             </button>
                         </div>
                     </div>

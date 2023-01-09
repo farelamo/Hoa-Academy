@@ -103,6 +103,14 @@
                 <div class="dropdown-header noti-title">
                   <h6 class="text-overflow m-0">Welcome {{Auth::user()->name}} !</h6>
                 </div>
+                @if (Auth::user()->role == 'user')
+                  @if (Auth::user()->courses()->wherePivot('finished', false)->count() > 0)
+                    <a href="/dashboard/absensi" class="dropdown-item">
+                      <i class="mdi mdi-fingerprint"></i>
+                      <span>Absensi</span>
+                    </a>
+                  @endif
+                @endif
                 <a href="#" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>My profile</span>

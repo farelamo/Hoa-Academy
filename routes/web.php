@@ -55,6 +55,8 @@ Route::prefix('/admin')->group(function(){
 Route::prefix('/dashboard')->group(function(){
     Route::get('/main', 'User\Dashboard\DashboardController@index');
 
+    Route::resource('/absensi', 'User\Absensi\AbsensiController');
+
     Route::get('/course', 'User\Course\CourseController@indexDashboard');
     Route::resource('/course', 'User\Course\CourseController')->except(['index']);
     Route::get('/course/{courseId}/chapter/{id}', 'User\Course\CourseController@showChapter');
