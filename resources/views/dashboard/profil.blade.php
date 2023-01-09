@@ -89,7 +89,7 @@
           </div>
         </div>
 
-        <div class="col-md-3">
+        {{-- <div class="col-md-3">
           <div class="header">
             <div class="header-body">
               <div class="align-items-center py-4">
@@ -121,7 +121,7 @@
           @empty
             <h1 class="py-4 fw-bold text-center">Belum Ada Progress Course</h1>
           @endforelse
-        </div>
+        </div> --}}
 
         <div class="col-md-3">
           <div class="header">

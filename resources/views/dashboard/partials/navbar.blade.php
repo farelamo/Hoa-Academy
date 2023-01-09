@@ -111,7 +111,7 @@
                     </a>
                   @endif
                 @endif
-                <a href="#" class="dropdown-item">
+                <a href="/dashboard/profil" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>My profile</span>
                 </a>

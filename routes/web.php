@@ -78,7 +78,7 @@ Route::prefix('/dashboard')->group(function(){
     });
     
     Route::get('/profil', function () {
-        return view('dashboard/user/profil',["title" => "Profil"]);
+        return view('dashboard/profil',["title" => "Profil"]);
     });
     
     Route::get('/checkout', function () {
