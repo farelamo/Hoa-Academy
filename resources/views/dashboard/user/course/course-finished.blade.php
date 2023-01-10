@@ -19,7 +19,7 @@
             <div class="container px-5" data-aos="fade-up">
               <div class="row">
                 @forelse ($finish_courses as $finish_course)
-                <div class="col-md-3 mb-4">
+                <div class="col-md-6 col-lg-4 col-xl-3 mb-4">
                   <div class="shadow-none card br-3 lexend course">
                     <img class="card-img-top br-3 br-b-0 img-cover" src="{{ Storage::disk('local')->exists('public/course/'. $finish_course->image) ? Storage::url('public/course/' . $finish_course->image) : '/assets/img/post.jpg'}}" alt="Card image cap" style="max-height: 20rem; height: 19rem">
                     <p class="p-3 m-0 text-muted font-weight-bold">{{ $finish_course->type }} | HSK {{ $finish_course->hsk_type }}</p>

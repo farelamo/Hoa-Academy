@@ -16,7 +16,7 @@
             </button>
           </form>
           <!-- Navbar links -->
-          <ul class="navbar-nav align-items-center  ml-md-auto ">
+          <ul class="navbar-nav align-items-center ml-md-auto ">
             
             
             <li class="nav-item dropdown">

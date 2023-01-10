@@ -34,7 +34,7 @@
     <div class="container pt-0 pb-6">
       <div class="row">
 
-        <div class="col-md-3">
+        <div class="col-lg-3 col-12">
           <div class="header">
             <div class="header-body">
               <div class="align-items-center py-4">
@@ -49,7 +49,7 @@
           </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-12">
           <div class="header">
           	<div class="header-body">
               <div class="align-items-center py-4">
@@ -81,7 +81,7 @@
           </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-lg-3 col-12">
           <div class="header">
             <div class="header-body">
               <div class="align-items-center py-4">
