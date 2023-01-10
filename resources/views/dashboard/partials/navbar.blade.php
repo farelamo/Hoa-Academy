@@ -23,7 +23,7 @@
               <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
                 <i class="ni ni-bell-55" style="color: #686767;"></i>
               </a>
-              <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end py-0">
+              <div class="dropdown-menu dropdown-menu-xl dropdown-menu-start dropdown-menu-md-end py-0">
                 <!-- Dropdown header -->
                 <div class="px-3 py-3">
                   <h6 class="text-sm text-muted m-0">Kamu punya <strong class="text-primary">0</strong> notifikasi.</h6>
