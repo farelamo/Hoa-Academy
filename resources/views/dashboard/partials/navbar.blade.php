@@ -91,7 +91,7 @@
               <a class="nav-link pr-0" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="{{ asset('dashboard/assets/img/users/Ava.png') }}">
+                    <img alt="Image placeholder" style="width: 40px; height:40px; object-fit: cover;" src="{{ Storage::disk('local')->exists('public/users/'. Auth::user()->picture) ? Storage::url('public/users/' . Auth::user()->picture) : asset('dashboard/assets/img/users/profil.jpg')}}">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
                     <span class="mb-0 text-dark font-weight-bold">{{Auth::user()->name}}</span>
@@ -111,13 +111,9 @@
                     </a>
                   @endif
                 @endif
-                <a href="/dashboard/profil" class="dropdown-item">
+                <a href="/profil" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>My profile</span>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <i class="ni ni-settings-gear-65"></i>
-                  <span>Edit password</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="/logout" class="dropdown-item" onclick="event.preventDefault();

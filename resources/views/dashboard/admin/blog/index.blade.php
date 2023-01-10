@@ -79,7 +79,7 @@
                         @method('PUT')
       
                         <div class="form-group">
-                            <label class="form-label">Upload Gambar</label>
+                          <label class="form-label">Upload Gambar</label>
                           <input type="file" class="form-control" id="ii" name="image">
                           @error('image')
                             <div class="error">*{{ $message }}</div>

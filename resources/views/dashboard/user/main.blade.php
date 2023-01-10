@@ -85,7 +85,7 @@
           <div class="header">
             <div class="header-body">
               <div class="align-items-center py-4">
-                <h2 class="h1 text-brown d-inline-block mb-0">Course</h2>
+                <h2 class="h1 text-brown d-inline-block mb-0">Continuous Course</h2>
               </div>
             </div>
           </div>

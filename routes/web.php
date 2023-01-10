@@ -22,6 +22,11 @@ Route::get('/auth-callback', 'Auth\Providers\GoogleProviderController@handleCall
 
 Route::post('/logout', 'Auth\AuthController@logout');
 
+/* Profile */
+Route::get('/profil', 'ProfileController@index');
+Route::put('/profil', 'ProfileController@update');
+Route::put('/profil/small-update', 'ProfileController@updateSmall');
+
 /* Admin Route */
 Route::prefix('/admin')->group(function(){
 
@@ -85,9 +90,6 @@ Route::prefix('/dashboard')->group(function(){
         return view('dashboard/user/exam2',["title" => "Exam"]);
     });
     
-    Route::get('/profil', function () {
-        return view('dashboard/profil',["title" => "Profil"]);
-    });
     
     Route::get('/checkout', function () {
         return view('dashboard/user/checkout',["title" => "Checkout"]);
