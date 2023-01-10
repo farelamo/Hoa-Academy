@@ -57,10 +57,18 @@ Route::prefix('/dashboard')->group(function(){
 
     Route::resource('/absensi', 'User\Absensi\AbsensiController');
 
-    Route::get('/course', 'User\Course\CourseController@indexDashboard');
+    /* Get Course & Chapter */
+    Route::prefix('/course')->group(function(){
+        Route::get('/', 'User\Course\CourseController@indexDashboard');
+        Route::get('/progress', 'User\Course\CourseController@progress');
+        Route::get('/finished', 'User\Course\CourseController@finished');
+
+        Route::get('/{courseId}/chapter/{id}', 'User\Course\CourseController@showChapter');
+    });
+
+    /* Resource Course */
     Route::resource('/course', 'User\Course\CourseController')->except(['index']);
-    Route::get('/course/{courseId}/chapter/{id}', 'User\Course\CourseController@showChapter');
-    
+
     Route::get('/vocabulary', function () {
         return view('dashboard/user/vocabulary',["title" => "Vocabulary"]);
     });

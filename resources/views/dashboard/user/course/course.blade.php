@@ -33,7 +33,7 @@
               <div class="card shadow-none course" style="height: fit-content">
                 <div class="card-body p-3">
                   <p class="text-brown text-sm fw-bold m-0">{{ $featured_course->type }}</p>
-                  <p class="h2 text-dark pr-4" style="line-height: normal;">{{ substr($featured_course->title, 0, 20) }}...</p>
+                  <p class="h2 text-dark pr-4" style="line-height: normal;">  </p>
                   <br>
                   <div class="row m-0">
                     <span class="col text-brown text-center text-sm p-0">{{ $featured_course->chapters->count() }} Chapter</span>
@@ -48,6 +48,7 @@
               <h1 class="py-4 fw-bold text-center">Belum Ada Course</h1>
             @endforelse
           </div>
+
           <div class="header">
             <div class="header-body">
               <div class="row align-items-center py-4">
@@ -56,7 +57,7 @@
                 </div>
                 @if ($continue_courses->count() > 0)
                   <div class="col d-flex m-0">
-                    <button href="#" class="btn text-brown ms-auto">lihat semua</button>
+                    <a href="/dashboard/course/progress" class="btn text-brown ms-auto">lihat semua</a>
                   </div>
                 @endif
               </div>
@@ -122,7 +123,7 @@
                 </div>
                 @if ($finish_courses->count() > 0)
                   <div class="col d-flex m-0">
-                    <button href="#" class="btn btn-light-brown ml-auto">lihat semua</button>
+                    <a href="/dashboard/course/finished" class="btn btn-light-brown ml-auto">lihat semua</a>
                   </div>
                 @endif
               </div>

@@ -49,6 +49,31 @@
             ));
         }
 
+        public function progress()
+        {
+            $continue_courses = Course::where('image', '!=', null)
+                                        ->whereHas('users', function ($query) {
+                                                $query->where('user_id', '=', Auth::user()->id);
+                                                $query->where('finished', '=', false);
+                                            }
+                                        )
+                                        ->paginate(4);
+
+            return view('dashboard.user.course.course-progress', ["title" => "Course"], compact('continue_courses'));            
+        }
+
+        public function finished()
+        {
+            $finish_courses = Course::where('image', '!=', null)
+                                        ->whereHas('users', function ($query){
+                                            $query->where('user_id', '=', Auth::user()->id);
+                                            $query->where('finished', '=', true);
+                                        })
+                                        ->paginate(4);
+
+            return view('dashboard.user.course.course-finished', ["title" => "Course"], compact('finish_courses'));    
+        }
+
         public function show($id)
         {
             $course = Course::where('id', $id)->first();

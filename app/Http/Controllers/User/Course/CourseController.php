@@ -23,6 +23,16 @@ class CourseController extends Controller
         return $this->service->indexDashboard();
     }
 
+    public function progress()
+    {
+        return $this->service->progress();
+    }
+
+    public function finished()
+    {
+        return $this->service->finished();
+    }
+
     public function show($id)
     {
         return $this->service->show($id);
