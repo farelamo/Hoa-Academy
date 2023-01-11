@@ -11,6 +11,7 @@ class AbsensiController extends Controller
 {
     public function __construct(AbsensiService $service)
     {
+        $this->middleware(['auth', 'user']);
         $this->service = $service;
     }
 

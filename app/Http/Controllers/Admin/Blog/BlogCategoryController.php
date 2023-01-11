@@ -13,6 +13,7 @@ class BlogCategoryController extends Controller
 
     public function __construct(BlogCategoryService $service)
     {
+        $this->middleware(['auth', 'admin']);
         $this->service = $service;
     }
 

@@ -10,6 +10,7 @@ class DashboardController extends Controller
 {
     public function __construct(DashboardService $service)
     {
+        $this->middleware(['auth', 'admin']);
         $this->service = $service;
     }
     

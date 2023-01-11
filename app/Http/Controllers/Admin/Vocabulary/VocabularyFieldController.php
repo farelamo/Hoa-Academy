@@ -11,6 +11,7 @@ class VocabularyFieldController extends Controller
 {
     public function __construct(VocabularyFieldService $service)
     {
+        $this->middleware(['auth', 'admin']);
         $this->service = $service;
     }
 

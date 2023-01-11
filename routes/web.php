@@ -76,22 +76,22 @@ Route::prefix('/dashboard')->group(function(){
 
     Route::resource('/vocabulary', 'User\Vocabulary\VocabularyController');
     
-    Route::get('/exam', function () {
-        return view('dashboard/user/exam',["title" => "Exam"]);
-    });
+    // Route::get('/exam', function () {
+    //     return view('dashboard/user/exam',["title" => "Exam"]);
+    // });
     
-    Route::get('/exam1', function () {
-        return view('dashboard/user/exam1',["title" => "Exam"]);
-    });
+    // Route::get('/exam1', function () {
+    //     return view('dashboard/user/exam1',["title" => "Exam"]);
+    // });
     
-    Route::get('/exam2', function () {
-        return view('dashboard/user/exam2',["title" => "Exam"]);
-    });
+    // Route::get('/exam2', function () {
+    //     return view('dashboard/user/exam2',["title" => "Exam"]);
+    // });
     
     
-    Route::get('/checkout', function () {
-        return view('dashboard/user/checkout',["title" => "Checkout"]);
-    });
+    // Route::get('/checkout', function () {
+    //     return view('dashboard/user/checkout',["title" => "Checkout"]);
+    // });
 });
 
 /* Public Route */
@@ -102,12 +102,12 @@ Route::put('event/{id}/join', 'User\Event\EventController@join');
 
 Route::get('/course', 'User\Course\CourseController@indexHome');
 
-Route::get('/quiz', function () {
-    return view('quiz',["title" => "Quiz"]);
-});
-Route::get('/quiz-start', function () {
-    return view('quiz-start',["title" => "Quiz"]);
-});
-Route::get('/quiz-end', function () {
-    return view('quiz-end',["title" => "Quiz"]);
-});
+// Route::get('/quiz', function () {
+//     return view('quiz',["title" => "Quiz"]);
+// });
+// Route::get('/quiz-start', function () {
+//     return view('quiz-start',["title" => "Quiz"]);
+// });
+// Route::get('/quiz-end', function () {
+//     return view('quiz-end',["title" => "Quiz"]);
+// });

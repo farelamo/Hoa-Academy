@@ -12,6 +12,7 @@ class ChapterController extends Controller
 {
     public function __construct(ChapterService $service)
     {
+        $this->middleware(['auth', 'admin']);
         $this->service = $service;
     }
 

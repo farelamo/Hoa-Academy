@@ -10,6 +10,7 @@ class EventController extends Controller
 {
     public function __construct(EventService $service)
     {
+        $this->middleware(['auth', 'user'])->only('join');
         $this->service = $service;
     }
 

@@ -10,6 +10,7 @@ class VocabularyController extends Controller
 {
     public function __construct(VocabularyService $service)
     {
+        $this->middleware(['auth', 'admin']);
         $this->service = $service;
     }
 

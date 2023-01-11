@@ -11,6 +11,7 @@ class CourseController extends Controller
 {
     public function __construct(CourseService $service)
     {
+        $this->middleware(['auth', 'admin']);
         $this->service = $service;
     }
 

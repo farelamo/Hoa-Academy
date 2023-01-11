@@ -11,6 +11,7 @@ class BlogController extends Controller
 {
     public function __construct(BlogService $service)
     {
+        $this->middleware(['auth', 'admin']);
         $this->service = $service;
     }
 

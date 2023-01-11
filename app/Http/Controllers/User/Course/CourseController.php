@@ -10,6 +10,7 @@ class CourseController extends Controller
 {
     public function __construct(CourseService $service)
     {
+        $this->middleware(['auth', 'user'])->except('indexHome');
         $this->service = $service;
     }
 
