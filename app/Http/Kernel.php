@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'user'  => \App\Http\Middleware\UserMiddleware::class,
+        'authRoute'  => \App\Http\Middleware\AuthRouteMiddleware::class,
     ];
 }

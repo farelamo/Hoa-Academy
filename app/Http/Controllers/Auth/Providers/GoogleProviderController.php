@@ -8,6 +8,7 @@ use App\Services\Auth\Providers\GoogleProviderService;
 class GoogleProviderController extends Controller
 {
     public function __construct(GoogleProviderService $service){
+        $this->middleware('authRoute');
         $this->service = $service;
     }
 
