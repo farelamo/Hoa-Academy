@@ -145,10 +145,10 @@
     new Chart(ctx1, {
       type: "line",
       data: {
-        labels: ["31 Januari", "1 Februari", "2 Februari", "3 Februari", "4 Februari", "5 Februari","6 Februari"],
+        labels: <?= json_encode($tahunAbsensi) ?>,
         datasets: [
           {
-            label: "Bahasa Cina",
+            label: "Absensi",
             tension: 0.4,
             borderWidth: 0,
             pointRadius: 2,
@@ -157,22 +157,9 @@
             borderWidth: 3,
             backgroundColor: gradientStroke1,
             fill: false,
-            data: [0, 10, 20, 30, 40, 30, 40],
+            data: <?= json_encode($countAbsensi) ?>,
             maxBarThickness: 6
           },
-          {
-            label: "Bahasa Mandarin",
-            tension: 0.4,
-            borderWidth: 0,
-            pointRadius: 10,
-            pointBackgroundColor: "#A13000",
-            borderColor: "#E0BAAA",
-            borderWidth: 3,
-            backgroundColor: gradientStroke2,
-            fill: true,
-            data: [0, 0, 0, 0, 0, 10, 20],
-            maxBarThickness: 6
-          }
         ],
       },
       options: {
