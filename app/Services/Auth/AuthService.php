@@ -61,7 +61,7 @@
                     return $this->error('Email sudah terdaftar', '/register');
                 }
 
-                User::create([
+                $data = User::create([
                     'name'              => $request->name,
                     'email'             => $request->email,
                     'password'          => Hash::make($request->password),
@@ -76,7 +76,8 @@
                 ]);
                 
                 alert()->success('success', 'Akun Berhasil Dibuat');
-                
+
+                Auth::login($data);
                 if(Auth::user()->role == 'admin'){
                     return redirect('/admin/main');
                 }

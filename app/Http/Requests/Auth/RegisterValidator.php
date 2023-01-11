@@ -17,14 +17,11 @@ class RegisterValidator extends FormRequest
             'name'              => 'required|max:200|regex:/^[A-Za-z\d\s\.]*$/',
             'email'             => 'email|required|unique:users,email',
             'password'          => 'required|max:8',
-            'role'              => 'required|in:user,admin',
             'age'               => 'required|numeric',
             'gender'            => 'required|in:man,woman',
-            'birth_date'        => 'required|date',
+            'birth_date'        => 'required|date_format:Y-m-d',
             'address'           => 'required',
             'profession'        => 'required',
-            'mandarin_level'    => 'required',
-            'poin'              => 'required'
         ];
     }
 
@@ -39,18 +36,14 @@ class RegisterValidator extends FormRequest
             'email.unique'              => 'The email was taken by another user',
             'password.required'         => 'The password is required',
             'password.max'              => 'The maximum allowed password is 8 characters',
-            'role.required'             => 'The role is required',
-            'role.in'                   => 'The role type doesnt match with our data',
             'gender.required'           => 'The gender is required',
             'gender.in'                 => 'The gender type doesnt match with our data',
             'age.required'              => 'The age is required',
             'age.numeric'               => 'The age field only contain numeric',
             'birth_date.required'       => 'The birth date is required',
-            'birth_date.date'           => 'Invalid, not a date format',
+            'birth_date.date_format'    => 'Invalid, not a date format',
             'address.required'          => 'The address is required',
             'profession.required'       => 'The profession is required',
-            'mandarin_level.required'   => 'The mandarin level is required',
-            'poin.required'             => 'The poin is required'
         ];
     }
 }

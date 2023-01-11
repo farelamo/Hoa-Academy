@@ -9,7 +9,15 @@
             <div class="card-body py-4 px-4">
               <div class="row">
                 <div class="col-md-2 d-flex">
-                  <img src="{{ Storage::disk('local')->exists('public/users/'. Auth::user()->picture) ? Storage::url('public/users/' . Auth::user()->picture) : asset('dashboard/assets/img/users/profil.jpg')}}" class="rounded-circle mx-auto" style="width: 150px; height:150px; object-fit: cover;">
+                  <img class="rounded-circle mx-auto" style="width: 150px; height:150px; object-fit: cover;"
+                  src="{{
+                    Auth::user()->picture != null ?
+                      Storage::disk('local')->exists('public/users/'. Auth::user()->picture) ? 
+                        Storage::url('public/users/' . Auth::user()->picture) :
+                        asset('dashboard/assets/img/users/default.png')
+                    :
+                      asset('dashboard/assets/img/users/default.png')
+                  }}">
                 </div>
                 <div class="col-md-4 d-flex">
                   <div class="my-auto">

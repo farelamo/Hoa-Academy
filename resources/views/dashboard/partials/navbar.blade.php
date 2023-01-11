@@ -91,7 +91,15 @@
               <a class="nav-link pr-0" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" style="width: 40px; height:40px; object-fit: cover;" src="{{ Storage::disk('local')->exists('public/users/'. Auth::user()->picture) ? Storage::url('public/users/' . Auth::user()->picture) : asset('dashboard/assets/img/users/profil.jpg')}}">
+                    <img alt="Image placeholder" style="width: 40px; height:40px; object-fit: cover;" 
+                    src="{{
+                      Auth::user()->picture != null ?
+                        Storage::disk('local')->exists('public/users/'. Auth::user()->picture) ? 
+                          Storage::url('public/users/' . Auth::user()->picture) :
+                          asset('dashboard/assets/img/users/default.png')
+                      :
+                        asset('dashboard/assets/img/users/default.png')
+                    }}">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
                     <span class="mb-0 text-dark font-weight-bold">{{Auth::user()->name}}</span>
