@@ -12,7 +12,7 @@
           <a class="nav-link scrollto {{ ($title==='Home') ? 'active' : '' }}" href="/home">Beranda</a>
           <a class="nav-link scrollto {{ ($title==='Course') ? 'active' : '' }}" href="/course">Kursus</a>
           <a class="nav-link scrollto {{ ($title==='Event') ? 'active' : '' }}" href="/event">Event</a>
-          <a class="nav-link scrollto {{ ($title==='Quiz') ? 'active' : '' }}" href="/quiz">Quiz</a>
+          {{-- <a class="nav-link scrollto {{ ($title==='Quiz') ? 'active' : '' }}" href="/quiz">Quiz</a> --}}
           <a class="nav-link scrollto {{ ($title==='Blog') ? 'active' : '' }}" href="/blog">Blog</a>
           <a style="width:300px"></a>
           {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>

@@ -145,12 +145,12 @@
                   <span class="nav-link-text">Vocabulary</span>
                 </a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a class="nav-link {{ ($title==='Exam') ? 'active' : '' }}" href="/dashboard/exam">
                   <i class="mdi mdi-book-open-page-variant"></i>
                   <span class="nav-link-text">Exam</span>
                 </a>
-              </li>
+              </li> --}}
               
               {{-- <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#componentsExamples" class="nav-link collapsed" aria-controls="componentsExamples" role="button" aria-expanded="false">

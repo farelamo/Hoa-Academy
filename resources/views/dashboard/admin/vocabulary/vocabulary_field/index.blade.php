@@ -32,11 +32,9 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $data->vocabularies->name }}</td>
                             <td>{{ $data->word }}</td>
-                            <td>
-                                <audio controls>
-                                    <source src="{{Storage::disk('local')->exists('public/vocabularies/'. $data->sound) ? Storage::url('public/vocabularies/' . $data->sound) : '/assets/sound/no-sound.mp3'}}" type="audio/ogg">
-                                    Your browser does not support the audio element.    
-                                </audio>
+                            <td onclick="playPause({{$data->id}})">
+                                <audio id="mySound{{$data->id}}" src="{{Storage::disk('local')->exists('public/vocabularies/'. $data->sound) ? Storage::url('public/vocabularies/' . $data->sound) : '/assets/sound/no-sound.mp3'}}" type="audio/mpeg"></audio>
+                                <i id="icon{{$data->id}}" class="mdi mdi-play-circle fs-2"></i>
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center">
@@ -98,6 +96,20 @@
 
 @section('script')
     <script type="text/javascript">
+        function playPause(id) {
+            var audio = document.getElementById(`mySound${id}`)
+
+            if (!audio.paused) {
+                audio.pause();
+                document.getElementById(`icon${id}`).classList.remove('mdi-pause-circle');
+                document.getElementById(`icon${id}`).classList.add('mdi-play-circle');
+            } else {
+                audio.play();
+                document.getElementById(`icon${id}`).classList.remove('mdi-play-circle');
+                document.getElementById(`icon${id}`).classList.add('mdi-pause-circle');
+            }
+        }
+
         function hapus(id) {
             var data = (document.getElementById(id).textContent).split(",")
             document.getElementById("dId").value            = id
