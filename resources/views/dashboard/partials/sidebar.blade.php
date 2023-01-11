@@ -140,6 +140,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link {{ ($title==='Vocabulary') ? 'active' : '' }}" href="/dashboard/vocabulary">
+                  <i class="mdi mdi-account-tie-voice"></i>
+                  <span class="nav-link-text">Vocabulary</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link {{ ($title==='Exam') ? 'active' : '' }}" href="/dashboard/exam">
                   <i class="mdi mdi-book-open-page-variant"></i>
                   <span class="nav-link-text">Exam</span>

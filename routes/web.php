@@ -74,9 +74,7 @@ Route::prefix('/dashboard')->group(function(){
     /* Resource Course */
     Route::resource('/course', 'User\Course\CourseController')->except(['index']);
 
-    Route::get('/vocabulary', function () {
-        return view('dashboard/user/vocabulary',["title" => "Vocabulary"]);
-    });
+    Route::resource('/vocabulary', 'User\Vocabulary\VocabularyController');
     
     Route::get('/exam', function () {
         return view('dashboard/user/exam',["title" => "Exam"]);
