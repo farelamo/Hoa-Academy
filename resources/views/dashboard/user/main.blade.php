@@ -74,9 +74,13 @@
               </div>
             </div> --}}
             <div class="card-body p-3">
-              <div class="chart rounded">
-                <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
-              </div>
+              @if (count($tahunAbsensi) > 0)
+                <div class="chart rounded">
+                  <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+                </div>
+              @else 
+                <h1 class="py-4 fw-bold text-center">Belum Ada Absensi</h1>
+              @endif
             </div>
           </div>
         </div>
